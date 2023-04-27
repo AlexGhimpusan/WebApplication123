@@ -1,33 +1,24 @@
 ﻿@model IEnumerable<AspNetCoreEntityFrameworkApp.Models.Course>
 
-<h1>Courses</h1>
+<div class="container text-center">
+    <h1>Courses</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New Course</a>
-</p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Study Year</th>
-            <th>Announcements</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.StudyYear)</td>
-                <td>@Html.DisplayFor(modelItem => item.Announcements)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+<div class="p-5 d-flex flex-wrap gap-5">
+    @foreach (var item in Model)
+    {
+            <div class="classCard card bg-light" style="width: 25rem; height: 15rem;">
+                <div class="card-header">
+                    <a asp-action="Details" asp-route-id="@item.Id"><h4 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h4></a>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted">An: @Html.DisplayFor(modelItem => item.StudyYear)</h6>
+                </div>
+                <div class="card-footer text-end">
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                </div>
+            </div>
+    }
+</div>
